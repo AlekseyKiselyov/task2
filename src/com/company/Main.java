@@ -16,12 +16,12 @@ public class Main {
         double radius;
         double distance;
         Point2D centerOfCircle;
-        ArrayList<Point2D> points = new ArrayList<Point2D>();
+        ArrayList<Point2D> points = new ArrayList<>();
 
         try(FileReader fr1 = new FileReader(circlePath); FileReader fr2 = new FileReader(pointsPath)) {
             BufferedReader reader = new BufferedReader(fr1);
             center = reader.readLine();
-            radius = Float.parseFloat(reader.readLine());
+            radius = Double.parseDouble(reader.readLine());
             centerOfCircle = toPoint(center);
             reader = new BufferedReader(fr2);
             point = reader.readLine();
@@ -35,10 +35,10 @@ public class Main {
                     System.out.println(2);
                 }
                 else if (distance == radius) {
-                    System.out.println(1);
+                    System.out.println(0);
                 }
                 else{
-                    System.out.println(0);
+                    System.out.println(1);
                 }
             }
         }
@@ -48,9 +48,9 @@ public class Main {
     }
     static Point2D toPoint(String string){
         String[] coordinats = string.split(" ");
-        float x = Float.parseFloat(coordinats[0]);
-        float y = Float.parseFloat(coordinats[1]);
-        Point2D p = new Point2D.Float(x, y);
-        return p;
+        double x = Double.parseDouble(coordinats[0]);
+        double y = Double.parseDouble(coordinats[1]);
+        return new Point2D.Double(x, y);
+
     }
 }
